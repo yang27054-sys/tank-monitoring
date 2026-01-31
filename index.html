@@ -23,602 +23,158 @@
             --tank-gradient-low: linear-gradient(180deg, #ffd700 0%, #ff8c00 100%);
             --tank-gradient-critical: linear-gradient(180deg, #ff6666 0%, #cc0033 100%);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* 背景效果 */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
-                repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,255,255,0.01) 50px, rgba(255,255,255,0.01) 51px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* 頂部標題區 */
-        .header {
-            background: linear-gradient(180deg, var(--bg-panel) 0%, transparent 100%);
-            padding: 20px 16px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--accent-cyan);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-        }
-
-        .logo-icon svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--bg-dark);
-        }
-
-        .title-group h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-            letter-spacing: 2px;
-        }
-
-        .title-group .subtitle {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            letter-spacing: 1px;
-        }
-
-        .status-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid var(--accent-green);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-            50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(0, 255, 136, 0); }
-        }
-
-        .update-time {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        /* 主內容區 */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* 區域標籤 */
-        .zone-section {
-            margin-bottom: 32px;
-        }
-
-        .zone-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .zone-label {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            background: rgba(0, 212, 255, 0.1);
-            padding: 6px 16px;
-            border-radius: 6px;
-            border: 1px solid var(--accent-cyan);
-        }
-
-        .zone-info {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* 油槽網格 */
-        .tank-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 16px;
-        }
-
-        @media (min-width: 768px) {
-            .tank-grid {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-                gap: 20px;
-            }
-        }
-
-        /* 油槽卡片 */
-        .tank-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 16px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tank-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--tank-gradient-full);
-            opacity: 0.8;
-        }
-
-        .tank-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
-        }
-
-        .tank-card.warning::before {
-            background: var(--tank-gradient-low);
-        }
-
-        .tank-card.critical::before {
-            background: var(--tank-gradient-critical);
-            animation: critical-flash 1s infinite;
-        }
-
-        .tank-card.critical-high::before {
-            background: var(--tank-gradient-critical);
-            animation: critical-flash 1s infinite;
-        }
-
-        .tank-card.critical-low::before {
-            background: var(--tank-gradient-critical);
-            animation: critical-flash 1s infinite;
-        }
-
-        .tank-card.critical-high,
-        .tank-card.critical-low {
-            border-color: var(--accent-red);
-            box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
-        }
-
-        @keyframes critical-flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .tank-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-
-        .tank-id {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: var(--accent-cyan);
-        }
-
-        .tank-capacity {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            background: rgba(255,255,255,0.05);
-            padding: 2px 8px;
-            border-radius: 10px;
-        }
-
-        .product-name {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            min-height: 2.4em;
-            line-height: 1.2;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .alert-badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 4px;
-            animation: badge-flash 1s infinite;
-            width: fit-content;
-        }
-
-        .alert-badge.high {
-            background: rgba(255, 51, 102, 0.2);
-            color: #ff6688;
-            border: 1px solid var(--accent-red);
-        }
-
-        .alert-badge.low {
-            background: rgba(255, 140, 0, 0.2);
-            color: #ffaa44;
-            border: 1px solid var(--accent-orange);
-        }
-
-        @keyframes badge-flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
-
-        /* 圓柱體油槽視覺化 */
-        .tank-visual {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-
-        .cylinder {
-            width: 80px;
-            height: 100px;
-            position: relative;
-            perspective: 200px;
-        }
-
-        .cylinder-body {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                rgba(30, 40, 55, 1) 0%,
-                rgba(50, 65, 85, 1) 30%,
-                rgba(60, 75, 95, 1) 50%,
-                rgba(50, 65, 85, 1) 70%,
-                rgba(30, 40, 55, 1) 100%);
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            overflow: hidden;
-        }
-
-        .cylinder-fill {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--tank-gradient-full);
-            transition: height 0.8s ease-out;
-            border-radius: 0 0 8px 8px;
-        }
-
-        .cylinder-fill::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-        }
-
-        .cylinder-fill.level-high {
-            background: var(--tank-gradient-full);
-        }
-
-        .cylinder-fill.level-mid {
-            background: var(--tank-gradient-mid);
-        }
-
-        .cylinder-fill.level-low {
-            background: var(--tank-gradient-low);
-        }
-
-        .cylinder-fill.level-critical {
-            background: var(--tank-gradient-critical);
-        }
-
-        /* 橢圓頂蓋 */
-        .cylinder-top {
-            position: absolute;
-            top: -8px;
-            left: 0;
-            width: 100%;
-            height: 16px;
-            background: linear-gradient(180deg, 
-                rgba(80, 95, 115, 1) 0%,
-                rgba(50, 65, 85, 1) 100%);
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.15);
-        }
-
-        .cylinder-bottom {
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 16px;
-            background: rgba(20, 30, 45, 1);
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* 液位表面 (隨液位高度移動) */
-        .liquid-surface {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background: linear-gradient(180deg, 
-                rgba(0, 212, 255, 0.9) 0%,
-                rgba(0, 180, 220, 0.7) 100%);
-            border-radius: 50%;
-            transition: bottom 0.8s ease-out;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-        }
-
-        .liquid-surface.level-mid {
-            background: linear-gradient(180deg, 
-                rgba(0, 255, 136, 0.9) 0%,
-                rgba(0, 200, 100, 0.7) 100%);
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-        }
-
-        .liquid-surface.level-low {
-            background: linear-gradient(180deg, 
-                rgba(255, 215, 0, 0.9) 0%,
-                rgba(255, 180, 0, 0.7) 100%);
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        .liquid-surface.level-critical {
-            background: linear-gradient(180deg, 
-                rgba(255, 102, 102, 0.9) 0%,
-                rgba(220, 50, 50, 0.7) 100%);
-            box-shadow: 0 0 10px rgba(255, 102, 102, 0.5);
-            animation: surface-pulse 1s infinite;
-        }
-
-        @keyframes surface-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* 百分比顯示 */
-        .percentage {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            z-index: 10;
-        }
-
-        /* 數據顯示 */
-        .tank-data {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 10px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 8px;
-        }
-
-        .data-label {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .data-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-        }
-
-        .data-value.level {
-            color: var(--accent-green);
-        }
-
-        .data-unit {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            margin-left: 2px;
-        }
-
-        /* 載入動畫 */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--bg-dark);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid var(--border-color);
-            border-top-color: var(--accent-cyan);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            margin-top: 20px;
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent-cyan);
-            letter-spacing: 2px;
-        }
-
-        /* 底部資訊 */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
-        }
-
-        /* 空槽樣式 */
-        .tank-card.empty {
-            opacity: 0.6;
-        }
-
-        .tank-card.empty .cylinder-fill {
-            height: 5% !important;
-            background: linear-gradient(180deg, #555 0%, #333 100%);
-        }
-
-        .tank-card.empty .liquid-surface {
-            background: linear-gradient(180deg, #666 0%, #444 100%);
-            box-shadow: none;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans TC', sans-serif; background: var(--bg-dark); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
+        
+        /* 密碼登入畫面 */
+        .login-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-dark); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+        .login-overlay.hidden { display: none; }
+        .login-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 0 60px rgba(0, 212, 255, 0.2); }
+        .login-box h2 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 8px; text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+        .login-box .login-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 30px; }
+        .login-box input[type="password"] { width: 100%; padding: 14px 20px; font-size: 1.1rem; background: var(--bg-dark); border: 2px solid var(--border-color); border-radius: 10px; color: var(--text-primary); text-align: center; letter-spacing: 4px; margin-bottom: 20px; transition: border-color 0.3s; }
+        .login-box input[type="password"]:focus { outline: none; border-color: var(--accent-cyan); }
+        .login-box input[type="password"].error { border-color: var(--accent-red); animation: shake 0.5s; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-10px); } 40%, 80% { transform: translateX(10px); } }
+        .login-box button { width: 100%; padding: 14px; font-size: 1rem; font-weight: 700; background: var(--accent-cyan); border: none; border-radius: 10px; color: var(--bg-dark); cursor: pointer; transition: all 0.3s; font-family: 'Noto Sans TC', sans-serif; }
+        .login-box button:hover { background: #00b8e6; box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+        .error-msg { color: var(--accent-red); font-size: 0.9rem; margin-top: 15px; min-height: 24px; }
+        .app-content { display: none; }
+        .app-content.visible { display: block; }
+        
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(0, 255, 136, 0.05) 0%, transparent 50%), repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,255,255,0.01) 50px, rgba(255,255,255,0.01) 51px); pointer-events: none; z-index: 0; }
+        .header { background: linear-gradient(180deg, var(--bg-panel) 0%, transparent 100%); padding: 20px 16px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-color); }
+        .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .logo-section { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 48px; height: 48px; background: var(--accent-cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+        .logo-icon svg { width: 28px; height: 28px; fill: var(--bg-dark); }
+        .title-group h1 { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--accent-cyan); text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); letter-spacing: 2px; }
+        .title-group .subtitle { font-size: 0.75rem; color: var(--text-secondary); letter-spacing: 1px; }
+        .status-badge { display: flex; align-items: center; gap: 8px; background: rgba(0, 255, 136, 0.1); border: 1px solid var(--accent-green); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; }
+        .status-dot { width: 10px; height: 10px; background: var(--accent-green); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); } 50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(0, 255, 136, 0); } }
+        .update-time { font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--text-secondary); }
+        .main-content { max-width: 1400px; margin: 0 auto; padding: 20px 16px; position: relative; z-index: 1; }
+        .zone-section { margin-bottom: 32px; }
+        .zone-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--border-color); }
+        .zone-label { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan); background: rgba(0, 212, 255, 0.1); padding: 6px 16px; border-radius: 6px; border: 1px solid var(--accent-cyan); }
+        .zone-info { font-size: 0.85rem; color: var(--text-secondary); }
+        .tank-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+        @media (min-width: 768px) { .tank-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; } }
+        .tank-card { background: var(--bg-card); border-radius: 16px; padding: 16px; border: 1px solid var(--border-color); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .tank-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--tank-gradient-full); opacity: 0.8; }
+        .tank-card:hover { transform: translateY(-4px); border-color: var(--accent-cyan); box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2); }
+        .tank-card.warning::before { background: var(--tank-gradient-low); }
+        .tank-card.critical::before, .tank-card.critical-high::before, .tank-card.critical-low::before { background: var(--tank-gradient-critical); animation: critical-flash 1s infinite; }
+        .tank-card.critical-high, .tank-card.critical-low { border-color: var(--accent-red); box-shadow: 0 0 20px rgba(255, 51, 102, 0.3); }
+        @keyframes critical-flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .tank-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .tank-id { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--accent-cyan); }
+        .tank-capacity { font-size: 0.7rem; color: var(--text-secondary); background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 10px; }
+        .product-name { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 16px; min-height: 2.4em; line-height: 1.2; display: flex; flex-direction: column; gap: 4px; }
+        .alert-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; animation: badge-flash 1s infinite; width: fit-content; }
+        .alert-badge.high { background: rgba(255, 51, 102, 0.2); color: #ff6688; border: 1px solid var(--accent-red); }
+        .alert-badge.low { background: rgba(255, 140, 0, 0.2); color: #ffaa44; border: 1px solid var(--accent-orange); }
+        @keyframes badge-flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .tank-visual { display: flex; justify-content: center; margin-bottom: 16px; }
+        .cylinder { width: 80px; height: 100px; position: relative; perspective: 200px; }
+        .cylinder-body { position: absolute; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(30, 40, 55, 1) 0%, rgba(50, 65, 85, 1) 30%, rgba(60, 75, 95, 1) 50%, rgba(50, 65, 85, 1) 70%, rgba(30, 40, 55, 1) 100%); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+        .cylinder-fill { position: absolute; bottom: 0; left: 0; right: 0; background: var(--tank-gradient-full); transition: height 0.8s ease-out; border-radius: 0 0 8px 8px; }
+        .cylinder-fill::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: rgba(255,255,255,0.3); border-radius: 50%; }
+        .cylinder-fill.level-high { background: var(--tank-gradient-full); }
+        .cylinder-fill.level-mid { background: var(--tank-gradient-mid); }
+        .cylinder-fill.level-low { background: var(--tank-gradient-low); }
+        .cylinder-fill.level-critical { background: var(--tank-gradient-critical); }
+        .cylinder-top { position: absolute; top: -8px; left: 0; width: 100%; height: 16px; background: linear-gradient(180deg, rgba(80, 95, 115, 1) 0%, rgba(50, 65, 85, 1) 100%); border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); }
+        .cylinder-bottom { position: absolute; bottom: -8px; left: 0; width: 100%; height: 16px; background: rgba(20, 30, 45, 1); border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); }
+        .liquid-surface { position: absolute; left: 0; width: 100%; height: 12px; background: linear-gradient(180deg, rgba(0, 212, 255, 0.9) 0%, rgba(0, 180, 220, 0.7) 100%); border-radius: 50%; transition: bottom 0.8s ease-out; box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+        .liquid-surface.level-mid { background: linear-gradient(180deg, rgba(0, 255, 136, 0.9) 0%, rgba(0, 200, 100, 0.7) 100%); box-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
+        .liquid-surface.level-low { background: linear-gradient(180deg, rgba(255, 215, 0, 0.9) 0%, rgba(255, 180, 0, 0.7) 100%); box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+        .liquid-surface.level-critical { background: linear-gradient(180deg, rgba(255, 102, 102, 0.9) 0%, rgba(220, 50, 50, 0.7) 100%); box-shadow: 0 0 10px rgba(255, 102, 102, 0.5); animation: surface-pulse 1s infinite; }
+        @keyframes surface-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .percentage { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); z-index: 10; }
+        .tank-data { display: flex; flex-direction: column; gap: 8px; }
+        .data-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(0,0,0,0.2); border-radius: 8px; }
+        .data-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+        .data-value { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--accent-cyan); }
+        .data-value.level { color: var(--accent-green); }
+        .data-unit { font-size: 0.7rem; color: var(--text-secondary); margin-left: 2px; }
+        .loading-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.5s ease; }
+        .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+        .loading-spinner { width: 60px; height: 60px; border: 3px solid var(--border-color); border-top-color: var(--accent-cyan); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { margin-top: 20px; font-family: 'Orbitron', sans-serif; color: var(--accent-cyan); letter-spacing: 2px; }
+        .footer { text-align: center; padding: 20px; color: var(--text-secondary); font-size: 0.8rem; border-top: 1px solid var(--border-color); margin-top: 40px; }
+        .tank-card.empty { opacity: 0.6; }
+        .tank-card.empty .cylinder-fill { height: 5% !important; background: linear-gradient(180deg, #555 0%, #333 100%); }
+        .tank-card.empty .liquid-surface { background: linear-gradient(180deg, #666 0%, #444 100%); box-shadow: none; }
     </style>
 </head>
 <body>
-    <!-- 載入畫面 -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">LOADING TANK DATA...</div>
-    </div>
-
-    <!-- 頂部標題 -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 10c-1.67 0-3.14-.85-4-2.15.02-1.32 2.67-2.05 4-2.05s3.98.73 4 2.05c-.86 1.3-2.33 2.15-4 2.15z"/></svg>
-                </div>
-                <div class="title-group">
-                    <h1>TGS TANK MONITOR</h1>
-                    <div class="subtitle">油槽液位即時監控系統</div>
-                </div>
-            </div>
-            <div class="status-badge">
-                <div class="status-dot"></div>
-                <span>ONLINE</span>
-            </div>
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h2>🛢️ TGS TANK MONITOR</h2>
+            <p class="login-subtitle">請輸入密碼以存取系統</p>
+            <input type="password" id="passwordInput" placeholder="請輸入密碼" autocomplete="off">
+            <button onclick="checkPassword()">登 入</button>
+            <div class="error-msg" id="errorMsg"></div>
         </div>
-        <div class="update-time" id="updateTime">最後更新: --</div>
-    </header>
-
-    <!-- 主內容 -->
-    <main class="main-content" id="mainContent">
-        <!-- 動態生成油槽卡片 -->
-    </main>
-
-    <!-- 底部 -->
-    <footer class="footer">
-        <p>TGS Float Level Gauge Monitor System</p>
-        <p>Powered by Enraf Entis Pro</p>
-    </footer>
-
+    </div>
+    <div class="app-content" id="appContent">
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">LOADING TANK DATA...</div>
+        </div>
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 10c-1.67 0-3.14-.85-4-2.15.02-1.32 2.67-2.05 4-2.05s3.98.73 4 2.05c-.86 1.3-2.33 2.15-4 2.15z"/></svg>
+                    </div>
+                    <div class="title-group">
+                        <h1>TGS TANK MONITOR</h1>
+                        <div class="subtitle">油槽液位即時監控系統</div>
+                    </div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    <span>ONLINE</span>
+                </div>
+            </div>
+            <div class="update-time" id="updateTime">最後更新: --</div>
+        </header>
+        <main class="main-content" id="mainContent"></main>
+        <footer class="footer">
+            <p>TGS Float Level Gauge Monitor System</p>
+            <p>Powered by Enraf Entis Pro</p>
+        </footer>
+    </div>
     <script>
-        // 油槽容量配置 (KL)
+        function simpleHash(str) { let hash = 0; for (let i = 0; i < str.length; i++) { const char = str.charCodeAt(i); hash = ((hash << 5) - hash) + char; hash = hash & hash; } return hash.toString(16); }
+        const CORRECT_HASH = simpleHash('S1520');
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const errorMsg = document.getElementById('errorMsg');
+            if (simpleHash(input.value) === CORRECT_HASH) {
+                document.getElementById('loginOverlay').classList.add('hidden');
+                document.getElementById('appContent').classList.add('visible');
+                init();
+            } else {
+                input.classList.add('error');
+                errorMsg.textContent = '密碼錯誤，請重試';
+                setTimeout(() => input.classList.remove('error'), 500);
+            }
+        }
+        document.getElementById('passwordInput').addEventListener('keypress', e => { if (e.key === 'Enter') checkPassword(); });
+
         const TANK_CAPACITIES = {
             'A1': 1500, 'A2': 1500, 'A3': 1500,
             'A11': 1500, 'A12': 1500, 'A13': 1500, 'A14': 1500, 'A15': 1500, 'A16': 1500,
-            'B11': 1000, 'B12': 1000, 'B13': 1000, 'B14': 1000,
-            'B15': 1000, 'B16': 1000, 'B17': 1000, 'B18': 1000,
-            'C2': 3000, 'C3': 3000, 'C5': 3000, 'C7': 3000, 'C8': 3000,
-            'C9': 3000, 'C10': 3000, 'C11': 3000, 'C12': 3000, 'C13': 3000,
-            'C14': 3000, 'C15': 3000, 'C16': 3000,
+            'B11': 1000, 'B12': 1000, 'B13': 1000, 'B14': 1000, 'B15': 1000, 'B16': 1000, 'B17': 1000, 'B18': 1000,
+            'C2': 3000, 'C3': 3000, 'C5': 3000, 'C7': 3000, 'C8': 3000, 'C9': 3000, 'C10': 3000, 'C11': 3000, 'C12': 3000, 'C13': 3000, 'C14': 3000, 'C15': 3000, 'C16': 3000,
             'E1': 5000, 'E2': 5000,
             'T417': 600, 'T418': 600
         };
-
-        // 區域分組
         const ZONES = {
             'A': { name: 'A 區', capacity: '1500 KL/槽', tanks: ['A1', 'A2', 'A3', 'A11', 'A12', 'A13', 'A14', 'A15', 'A16'] },
             'B': { name: 'B 區', capacity: '1000 KL/槽', tanks: ['B11', 'B12', 'B13', 'B14', 'B15', 'B16', 'B17', 'B18'] },
@@ -626,275 +182,111 @@
             'E': { name: 'E 區', capacity: '5000 KL/槽', tanks: ['E1', 'E2'] },
             'T': { name: 'T 區', capacity: '600 KL/槽', tanks: ['T417', 'T418'] }
         };
-
-        // 模擬資料 (實際使用時會從 JSON 載入)
-        // 包含高液位和低液位警示案例
         const DEMO_DATA = {
-            'A1': { product: 'HEPTANES', level: 7520, tov: 1125.3 },      // ⚠ 高液位 >7000
+            'A1': { product: 'HEPTANES', level: 7520, tov: 1125.3 },
             'A2': { product: 'LK', level: 6230, tov: 823.5 },
             'A3': { product: 'SOLVENT #100', level: 5150, tov: 680.8 },
             'A11': { product: 'C9+', level: 4340, tov: 570.2 },
             'A12': { product: 'C9+', level: 5120, tov: 677.1 },
-            'A13': { product: 'LK', level: 850, tov: 112.0 },             // ⚠ 低液位 <1000
-            'A14': { product: 'C30', level: 750, tov: 99.2 },             // ⚠ 低液位 <1000
-            'A15': { product: 'HEXANES', level: 7200, tov: 952.1 },       // ⚠ 高液位 >7000
+            'A13': { product: 'LK', level: 850, tov: 112.0 },
+            'A14': { product: 'C30', level: 750, tov: 99.2 },
+            'A15': { product: 'HEXANES', level: 7200, tov: 952.1 },
             'A16': { product: 'HEXANES', level: 2150, tov: 284.3 },
             'B11': { product: 'SOLVENT #100', level: 7890, tov: 785.2 },
-            'B12': { product: 'SOLVENT #100', level: 320, tov: 31.8 },    // ⚠ 低液位 <1000
+            'B12': { product: 'SOLVENT #100', level: 320, tov: 31.8 },
             'B13': { product: 'SOLVENT #100', level: 6540, tov: 651.2 },
-            'B14': { product: 'KEROSENE', level: 8650, tov: 861.5 },      // ⚠ 高液位 >8500
+            'B14': { product: 'KEROSENE', level: 8650, tov: 861.5 },
             'B15': { product: 'EMPTY TANK', level: 150, tov: 14.9 },
             'B16': { product: 'SOLVENT #150', level: 6920, tov: 689.1 },
             'B17': { product: 'SOLVENT #150', level: 5670, tov: 564.5 },
-            'B18': { product: 'SOLVENT #150', level: 210, tov: 20.9 },    // ⚠ 低液位 <1000
-            'C2': { product: 'SOLVENT #100', level: 10500, tov: 2625.0 }, // ⚠ 高液位 >10000
+            'B18': { product: 'SOLVENT #150', level: 210, tov: 20.9 },
+            'C2': { product: 'SOLVENT #100', level: 10500, tov: 2625.0 },
             'C3': { product: 'RAF #2', level: 9870, tov: 2467.5 },
             'C5': { product: 'VM&P NAPHTHA', level: 1520, tov: 380.0 },
             'C7': { product: 'C30', level: 8200, tov: 2050.0 },
-            'C8': { product: 'CLEANING NAPHTHA', level: 850, tov: 212.5 }, // ⚠ 低液位 <1000
+            'C8': { product: 'CLEANING NAPHTHA', level: 850, tov: 212.5 },
             'C9': { product: 'MULIT-PURPOSE', level: 7350, tov: 1837.5 },
             'C10': { product: 'RAF #3', level: 8750, tov: 2187.5 },
             'C11': { product: 'EMPTY TANK', level: 85, tov: 21.3 },
-            'C12': { product: 'MULIT-PURPOSE', level: 420, tov: 105.0 },  // ⚠ 低液位 <1000
-            'C13': { product: 'C9+', level: 10650, tov: 2662.5 },         // ⚠ 高液位 >10000
-            'C14': { product: 'C9+', level: 650, tov: 162.5 },            // ⚠ 低液位 <1000
+            'C12': { product: 'MULIT-PURPOSE', level: 420, tov: 105.0 },
+            'C13': { product: 'C9+', level: 10650, tov: 2662.5 },
+            'C14': { product: 'C9+', level: 650, tov: 162.5 },
             'C15': { product: 'MIX-HEXANES', level: 7890, tov: 1972.5 },
             'C16': { product: 'C9+', level: 7230, tov: 1807.5 },
             'E1': { product: 'RAFFINATE', level: 6540, tov: 2725.8 },
-            'E2': { product: 'RAFFINATE', level: 10230, tov: 4262.5 },    // ⚠ 高液位 >10000
+            'E2': { product: 'RAFFINATE', level: 10230, tov: 4262.5 },
             'T417': { product: 'EMPTY TANK', level: 45, tov: 4.5 },
             'T418': { product: 'HEATING OIL', level: 4520, tov: 451.2 }
         };
-
-        // 液位警示門檻設定 (單位: mm)
         const LEVEL_LIMITS = {
-            'A': { high: 7000, low: 1000 },   // A油槽: >7米 或 <1米 警示
-            'B': { high: 8500, low: 1000 },   // B油槽: >8.5米 或 <1米 警示
-            'C': { high: 10000, low: 1000 },  // C油槽: >10米 或 <1米 警示
-            'E': { high: 10000, low: 1000 },  // E油槽: >10米 或 <1米 警示
-            'T': { high: 5000, low: 500 }     // T油槽: 預設值
+            'A': { high: 7000, low: 1000 },
+            'B': { high: 8500, low: 1000 },
+            'C': { high: 10000, low: 1000 },
+            'E': { high: 10000, low: 1000 },
+            'T': { high: 5000, low: 500 }
         };
-
-        // 取得油槽區域代碼
-        function getZoneCode(tankId) {
-            return tankId.charAt(0);
-        }
-
-        // 計算液位百分比
-        function calculatePercentage(tankId, tov) {
-            const capacity = TANK_CAPACITIES[tankId] || 1000;
-            return Math.min(100, Math.max(0, (tov / capacity) * 100));
-        }
-
-        // 檢查是否為危險液位 (過高或過低)
-        function isDangerLevel(tankId, level) {
-            const zone = getZoneCode(tankId);
-            const limits = LEVEL_LIMITS[zone] || { high: 10000, low: 1000 };
-            return level >= limits.high || level <= limits.low;
-        }
-
-        // 檢查是否為高液位警示
-        function isHighLevel(tankId, level) {
-            const zone = getZoneCode(tankId);
-            const limits = LEVEL_LIMITS[zone] || { high: 10000, low: 1000 };
-            return level >= limits.high;
-        }
-
-        // 檢查是否為低液位警示
-        function isLowLevel(tankId, level) {
-            const zone = getZoneCode(tankId);
-            const limits = LEVEL_LIMITS[zone] || { high: 10000, low: 1000 };
-            return level <= limits.low;
-        }
-
-        // 獲取液位等級 (顏色)
+        function getZoneCode(tankId) { return tankId.charAt(0); }
+        function calculatePercentage(tankId, tov) { const capacity = TANK_CAPACITIES[tankId] || 1000; return Math.min(100, Math.max(0, (tov / capacity) * 100)); }
+        function isDangerLevel(tankId, level) { const zone = getZoneCode(tankId); const limits = LEVEL_LIMITS[zone] || { high: 10000, low: 1000 }; return level >= limits.high || level <= limits.low; }
+        function isHighLevel(tankId, level) { const zone = getZoneCode(tankId); const limits = LEVEL_LIMITS[zone] || { high: 10000, low: 1000 }; return level >= limits.high; }
+        function isLowLevel(tankId, level) { const zone = getZoneCode(tankId); const limits = LEVEL_LIMITS[zone] || { high: 10000, low: 1000 }; return level <= limits.low; }
         function getLevelClass(tankId, level, percentage, product) {
-            // 空槽特殊處理
             if (product === 'EMPTY TANK') return 'level-empty';
-            
-            // 危險液位 (過高或過低) - 紅色
             if (isDangerLevel(tankId, level)) return 'level-critical';
-            
-            // 根據百分比判斷顏色
-            if (percentage >= 70) return 'level-high';      // 藍色
-            if (percentage >= 40) return 'level-mid';       // 綠色
-            if (percentage >= 15) return 'level-low';       // 黃色
-            return 'level-critical';                         // 紅色
+            if (percentage >= 70) return 'level-high';
+            if (percentage >= 40) return 'level-mid';
+            if (percentage >= 15) return 'level-low';
+            return 'level-critical';
         }
-
-        // 獲取卡片狀態 (邊框閃爍)
         function getCardStatus(tankId, level, percentage, product) {
             if (product === 'EMPTY TANK') return 'empty';
-            
-            // 危險液位 - 紅色閃爍
-            if (isDangerLevel(tankId, level)) {
-                return isHighLevel(tankId, level) ? 'critical-high' : 'critical-low';
-            }
-            
+            if (isDangerLevel(tankId, level)) return isHighLevel(tankId, level) ? 'critical-high' : 'critical-low';
             if (percentage < 30) return 'warning';
             return '';
         }
-
-        // 創建油槽卡片
         function createTankCard(tankId, data) {
             const capacity = TANK_CAPACITIES[tankId];
             const percentage = calculatePercentage(tankId, data.tov);
             const levelClass = getLevelClass(tankId, data.level, percentage, data.product);
             const cardStatus = getCardStatus(tankId, data.level, percentage, data.product);
             const fillHeight = Math.max(5, percentage);
-            
-            // 判斷警示類型文字
             let alertText = '';
             if (data.product !== 'EMPTY TANK' && isDangerLevel(tankId, data.level)) {
-                if (isHighLevel(tankId, data.level)) {
-                    alertText = '<span class="alert-badge high">⚠ 高液位</span>';
-                } else {
-                    alertText = '<span class="alert-badge low">⚠ 低液位</span>';
-                }
+                alertText = isHighLevel(tankId, data.level) ? '<span class="alert-badge high">⚠ 高液位</span>' : '<span class="alert-badge low">⚠ 低液位</span>';
             }
-
-            return `
-                <div class="tank-card ${cardStatus}">
-                    <div class="tank-header">
-                        <div class="tank-id">${tankId}</div>
-                        <div class="tank-capacity">${capacity} KL</div>
-                    </div>
-                    <div class="product-name">${data.product}${alertText}</div>
-                    <div class="tank-visual">
-                        <div class="cylinder">
-                            <div class="cylinder-top"></div>
-                            <div class="cylinder-body">
-                                <div class="cylinder-fill ${levelClass}" style="height: ${fillHeight}%;"></div>
-                                <div class="liquid-surface ${levelClass}" style="bottom: calc(${fillHeight}% - 6px);"></div>
-                            </div>
-                            <div class="cylinder-bottom"></div>
-                            <div class="percentage">${percentage.toFixed(0)}%</div>
-                        </div>
-                    </div>
-                    <div class="tank-data">
-                        <div class="data-row">
-                            <span class="data-label">液位</span>
-                            <span class="data-value level">${data.level.toLocaleString()}<span class="data-unit">mm</span></span>
-                        </div>
-                        <div class="data-row">
-                            <span class="data-label">存量</span>
-                            <span class="data-value">${data.tov.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}<span class="data-unit">KL</span></span>
-                        </div>
-                    </div>
-                </div>
-            `;
+            return '<div class="tank-card ' + cardStatus + '"><div class="tank-header"><div class="tank-id">' + tankId + '</div><div class="tank-capacity">' + capacity + ' KL</div></div><div class="product-name">' + data.product + alertText + '</div><div class="tank-visual"><div class="cylinder"><div class="cylinder-top"></div><div class="cylinder-body"><div class="cylinder-fill ' + levelClass + '" style="height: ' + fillHeight + '%;"></div><div class="liquid-surface ' + levelClass + '" style="bottom: calc(' + fillHeight + '% - 6px);"></div></div><div class="cylinder-bottom"></div><div class="percentage">' + percentage.toFixed(0) + '%</div></div></div><div class="tank-data"><div class="data-row"><span class="data-label">液位</span><span class="data-value level">' + data.level.toLocaleString() + '<span class="data-unit">mm</span></span></div><div class="data-row"><span class="data-label">存量</span><span class="data-value">' + data.tov.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1}) + '<span class="data-unit">KL</span></span></div></div></div>';
         }
-
-        // 創建區域
         function createZoneSection(zoneKey, zoneInfo, tankData) {
-            const tanksHtml = zoneInfo.tanks.map(tankId => {
-                const data = tankData[tankId] || { product: 'N/A', level: 0, tov: 0 };
-                return createTankCard(tankId, data);
-            }).join('');
-
-            return `
-                <section class="zone-section">
-                    <div class="zone-header">
-                        <div class="zone-label">${zoneInfo.name}</div>
-                        <div class="zone-info">${zoneInfo.tanks.length} 槽 · ${zoneInfo.capacity}</div>
-                    </div>
-                    <div class="tank-grid">
-                        ${tanksHtml}
-                    </div>
-                </section>
-            `;
+            const tanksHtml = zoneInfo.tanks.map(tankId => createTankCard(tankId, tankData[tankId] || { product: 'N/A', level: 0, tov: 0 })).join('');
+            return '<section class="zone-section"><div class="zone-header"><div class="zone-label">' + zoneInfo.name + '</div><div class="zone-info">' + zoneInfo.tanks.length + ' 槽 · ' + zoneInfo.capacity + '</div></div><div class="tank-grid">' + tanksHtml + '</div></section>';
         }
-
-        // 渲染所有油槽
         function renderTanks(tankData) {
-            const mainContent = document.getElementById('mainContent');
             let html = '';
-            
-            for (const [zoneKey, zoneInfo] of Object.entries(ZONES)) {
-                html += createZoneSection(zoneKey, zoneInfo, tankData);
-            }
-            
-            mainContent.innerHTML = html;
+            for (const [zoneKey, zoneInfo] of Object.entries(ZONES)) { html += createZoneSection(zoneKey, zoneInfo, tankData); }
+            document.getElementById('mainContent').innerHTML = html;
         }
-
-        // 更新時間顯示
-        function updateTimestamp() {
-            const now = new Date();
-            const timeStr = now.toLocaleString('zh-TW', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
-            document.getElementById('updateTime').textContent = `最後更新: ${timeStr}`;
-        }
-
-        // 載入資料
         async function loadData() {
             try {
-                // 嘗試載入外部 JSON 檔案（加上時間戳避免快取）
                 const response = await fetch('tank_data.json?t=' + Date.now());
                 if (response.ok) {
                     const data = await response.json();
-                    // 新格式：{ update_time: "...", tanks: {...} }
-                    if (data.tanks) {
-                        return { 
-                            tanks: data.tanks, 
-                            updateTime: data.update_time 
-                        };
-                    }
-                    // 舊格式：直接是油槽資料
+                    if (data.tanks) return { tanks: data.tanks, updateTime: data.update_time };
                     return { tanks: data, updateTime: null };
                 }
-            } catch (e) {
-                console.log('使用示範資料:', e);
-            }
-            // 如果載入失敗，使用示範資料
+            } catch (e) { console.log('使用示範資料:', e); }
             return { tanks: DEMO_DATA, updateTime: null };
         }
-
-        // 更新時間顯示
         function updateTimestamp(serverTime) {
-            let timeStr;
-            if (serverTime) {
-                timeStr = serverTime;
-            } else {
-                const now = new Date();
-                timeStr = now.toLocaleString('zh-TW', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
-                });
-            }
-            document.getElementById('updateTime').textContent = `最後更新: ${timeStr}`;
+            let timeStr = serverTime || new Date().toLocaleString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('updateTime').textContent = '最後更新: ' + timeStr;
         }
-
-        // 初始化
         async function init() {
             const { tanks, updateTime } = await loadData();
             renderTanks(tanks);
             updateTimestamp(updateTime);
-            
-            // 隱藏載入畫面
-            setTimeout(() => {
-                document.getElementById('loadingOverlay').classList.add('hidden');
-            }, 800);
-            
-            // 定時更新 (每分鐘檢查新資料)
-            setInterval(async () => {
-                const { tanks: newTanks, updateTime: newTime } = await loadData();
-                renderTanks(newTanks);
-                updateTimestamp(newTime);
-            }, 60000);
+            setTimeout(() => document.getElementById('loadingOverlay').classList.add('hidden'), 800);
+            setInterval(async () => { const { tanks: newTanks, updateTime: newTime } = await loadData(); renderTanks(newTanks); updateTimestamp(newTime); }, 60000);
         }
-
-        // 啟動
-        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
