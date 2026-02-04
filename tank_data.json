@@ -1,175 +1,175 @@
 {
-  "update_time": "2026/02/03 17:08:55",
+  "update_time": "2026/02/04 08:30:23",
   "tanks": {
-    "A1": {
-      "product": "HEPTANES",
-      "level": 5520,
-      "tov": 825.3
-    },
-    "A2": {
-      "product": "LK",
-      "level": 6230,
-      "tov": 823.5
-    },
-    "A3": {
-      "product": "SOLVENT #100",
-      "level": 5150,
-      "tov": 680.8
-    },
-    "A11": {
-      "product": "C9+",
-      "level": 4340,
-      "tov": 570.2
-    },
-    "A12": {
-      "product": "C9+",
-      "level": 5120,
-      "tov": 677.1
-    },
-    "A13": {
-      "product": "LK",
-      "level": 3850,
-      "tov": 512.0
-    },
-    "A14": {
-      "product": "C30",
-      "level": 2750,
-      "tov": 399.2
-    },
-    "A15": {
-      "product": "HEXANES",
-      "level": 6200,
-      "tov": 852.1
-    },
-    "A16": {
-      "product": "HEXANES",
-      "level": 2150,
-      "tov": 284.3
-    },
-    "B11": {
-      "product": "SOLVENT #100",
-      "level": 7890,
-      "tov": 785.2
-    },
-    "B12": {
-      "product": "SOLVENT #100",
-      "level": 3320,
-      "tov": 331.8
-    },
-    "B13": {
-      "product": "SOLVENT #100",
-      "level": 6540,
-      "tov": 651.2
-    },
-    "B14": {
-      "product": "KEROSENE",
-      "level": 7650,
-      "tov": 761.5
-    },
-    "B15": {
-      "product": "EMPTY TANK",
-      "level": 150,
-      "tov": 14.9
-    },
-    "B16": {
-      "product": "SOLVENT #150",
-      "level": 6920,
-      "tov": 689.1
-    },
-    "B17": {
-      "product": "SOLVENT #150",
-      "level": 5670,
-      "tov": 564.5
-    },
-    "B18": {
-      "product": "SOLVENT #150",
-      "level": 4210,
-      "tov": 420.9
-    },
-    "C2": {
-      "product": "SOLVENT #100",
-      "level": 8500,
-      "tov": 2125.0
-    },
-    "C3": {
-      "product": "RAF #2",
-      "level": 9870,
-      "tov": 2467.5
-    },
-    "C5": {
-      "product": "VM&P NAPHTHA",
-      "level": 1520,
-      "tov": 380.0
-    },
-    "C7": {
-      "product": "C30",
-      "level": 8200,
-      "tov": 2050.0
-    },
-    "C8": {
-      "product": "CLEANING NAPHTHA",
-      "level": 3850,
-      "tov": 962.5
-    },
-    "C9": {
-      "product": "MULIT-PURPOSE",
-      "level": 7350,
-      "tov": 1837.5
-    },
-    "C10": {
-      "product": "RAF #3",
-      "level": 8750,
-      "tov": 2187.5
-    },
     "C11": {
       "product": "EMPTY TANK",
-      "level": 85,
-      "tov": 21.3
+      "level": 95.0,
+      "tov": 17.2
     },
     "C12": {
       "product": "MULIT-PURPOSE",
-      "level": 4420,
-      "tov": 1105.0
+      "level": 1810.0,
+      "tov": 472.7
     },
     "C13": {
       "product": "C9+",
-      "level": 8650,
-      "tov": 2162.5
+      "level": 8729.0,
+      "tov": 2263.4
     },
     "C14": {
       "product": "C9+",
-      "level": 3650,
-      "tov": 912.5
+      "level": 8775.0,
+      "tov": 2273.5
     },
     "C15": {
       "product": "MIX-HEXANES",
-      "level": 7890,
-      "tov": 1972.5
+      "level": 2948.0,
+      "tov": 764.2
     },
     "C16": {
       "product": "C9+",
-      "level": 7230,
-      "tov": 1807.5
+      "level": 24.0,
+      "tov": 6.2
     },
-    "E1": {
-      "product": "RAFFINATE",
-      "level": 6540,
-      "tov": 2725.8
+    "A1": {
+      "product": "HEPTANES",
+      "level": 1839.0,
+      "tov": 326.8
+    },
+    "A11": {
+      "product": "C9+",
+      "level": 6083.0,
+      "tov": 1093.9
+    },
+    "A12": {
+      "product": "C9+",
+      "level": 6133.0,
+      "tov": 1096.9
     },
     "E2": {
       "product": "RAFFINATE",
-      "level": 8230,
-      "tov": 3429.2
+      "level": 2599.0,
+      "tov": 1203.8
     },
     "T417": {
       "product": "EMPTY TANK",
-      "level": 45,
-      "tov": 4.5
+      "level": 36.0,
+      "tov": 2.8
     },
     "T418": {
       "product": "HEATING OIL",
-      "level": 4520,
-      "tov": 451.2
+      "level": 2963.0,
+      "tov": 193.9
+    },
+    "A13": {
+      "product": "LK",
+      "level": 1272.0,
+      "tov": 232.8
+    },
+    "A14": {
+      "product": "C30",
+      "level": 846.0,
+      "tov": 150.9
+    },
+    "A15": {
+      "product": "HEXANES",
+      "level": 1134.0,
+      "tov": 203.6
+    },
+    "A16": {
+      "product": "HEXANES",
+      "level": 1135.0,
+      "tov": 207.3
+    },
+    "A2": {
+      "product": "LK",
+      "level": 1921.0,
+      "tov": 348.9
+    },
+    "A3": {
+      "product": "SOLVENT #100",
+      "level": 1961.0,
+      "tov": 356.1
+    },
+    "B11": {
+      "product": "SOLVENT #100",
+      "level": 4867.0,
+      "tov": 512.6
+    },
+    "B12": {
+      "product": "SOLVENT #100",
+      "level": 4854.0,
+      "tov": 513.2
+    },
+    "B13": {
+      "product": "SOLVENT #100",
+      "level": 7560.0,
+      "tov": 793.9
+    },
+    "B14": {
+      "product": "KEROSENE",
+      "level": 4637.0,
+      "tov": 490.8
+    },
+    "B15": {
+      "product": "EMPTY TANK",
+      "level": 999999.9,
+      "tov": 1000000.0
+    },
+    "B16": {
+      "product": "SOLVENT #150",
+      "level": 2239.0,
+      "tov": 232.4
+    },
+    "B17": {
+      "product": "SOLVENT #150",
+      "level": 3141.0,
+      "tov": 330.3
+    },
+    "B18": {
+      "product": "SOLVENT #150",
+      "level": 3116.0,
+      "tov": 328.5
+    },
+    "C10": {
+      "product": "RAF #3",
+      "level": 1573.0,
+      "tov": 411.2
+    },
+    "C2": {
+      "product": "SOLVENT #100",
+      "level": 2047.0,
+      "tov": 492.8
+    },
+    "C3": {
+      "product": "RAF #2",
+      "level": 4018.0,
+      "tov": 1055.6
+    },
+    "C5": {
+      "product": "VM&P NAPHTHA",
+      "level": 3912.0,
+      "tov": 1028.3
+    },
+    "C7": {
+      "product": "C30",
+      "level": 18.0,
+      "tov": 4.5
+    },
+    "C8": {
+      "product": "CLEANING NAPHTHA",
+      "level": 5366.0,
+      "tov": 1403.9
+    },
+    "C9": {
+      "product": "MULIT-PURPOSE",
+      "level": 2729.0,
+      "tov": 715.0
+    },
+    "E1": {
+      "product": "RAFFINATE",
+      "level": 2611.0,
+      "tov": 1209.9
     }
   }
 }
